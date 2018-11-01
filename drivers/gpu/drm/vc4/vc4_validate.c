@@ -646,6 +646,9 @@ reloc_tex(struct vc4_exec_info *exec,
 	case VC4_TEXTURE_TYPE_S8:
 		cpp = 1;
 		break;
+	case VC4_TEXTURE_TYPE_RGBA64:
+		cpp = 8;
+		break;
 	case VC4_TEXTURE_TYPE_ETC1:
 		/* ETC1 is arranged as 64-bit blocks, where each block is 4x4
 		 * pixels.
@@ -657,7 +660,6 @@ reloc_tex(struct vc4_exec_info *exec,
 	case VC4_TEXTURE_TYPE_BW1:
 	case VC4_TEXTURE_TYPE_A4:
 	case VC4_TEXTURE_TYPE_A1:
-	case VC4_TEXTURE_TYPE_RGBA64:
 	case VC4_TEXTURE_TYPE_YUV422R:
 	default:
 		DRM_DEBUG("Texture format %d unsupported\n", type);
