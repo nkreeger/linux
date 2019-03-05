@@ -646,6 +646,10 @@ reloc_tex(struct vc4_exec_info *exec,
 	case VC4_TEXTURE_TYPE_S8:
 		cpp = 1;
 		break;
+	case VC4_TEXTURE_TYPE_RGBA64:
+		// TODO(kreeger): I might have to tile differently here see below:
+		cpp = 8;
+		break;
 	case VC4_TEXTURE_TYPE_ETC1:
 		/* ETC1 is arranged as 64-bit blocks, where each block is 4x4
 		 * pixels.
